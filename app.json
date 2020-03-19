@@ -6,16 +6,7 @@
   "keywords": [ "python", "flask" ],
   "addons": [ ],
   "env": {
-    "SECRET_KEY": {
-      "description": "This is my secret.",
-      "generator": "secret"
-    }
-  },
-  "environments": {
-    "test": {
-      "scripts": {
-        "test": "python runserver.py test"
-      }
-    }
+    "SERVER_HOST": "https://clh-pytest.herokuapp.com/",
+    "SERVER_PORT":  "8080"
   }
 }
