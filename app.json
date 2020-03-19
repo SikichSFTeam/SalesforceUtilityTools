@@ -4,7 +4,7 @@
   "image": "heroku/python",
   "repository": "https://github.com/chowa-sikich/SalesforceUtilityTools",
   "keywords": [ "python", "flask" ],
-  "addons": [ ],
+  "addons": [],
   "env": {
     "SERVER_HOST": "https://clh-pytest.herokuapp.com/",
     "SERVER_PORT":  "8080"
