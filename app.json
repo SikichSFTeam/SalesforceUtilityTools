@@ -1,0 +1,21 @@
+{
+  "name": "SalesforceUtilityTools",
+  "description": "Various Salesforce Utility Applications.",
+  "image": "heroku/python",
+  "repository": "https://github.com/chowa-sikich/SalesforceUtilityTools",
+  "keywords": [ "python", "flask" ],
+  "addons": [ ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "This is my secret.",
+      "generator": "secret"
+    }
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "python runserver.py test"
+      }
+    }
+  }
+}
