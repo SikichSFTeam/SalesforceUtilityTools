@@ -1,5 +1,5 @@
 from os import environ
-from SalesforceUtilityTools import app
+from . import app
 
 
 def create_app():

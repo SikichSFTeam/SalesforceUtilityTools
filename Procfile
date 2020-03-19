@@ -1,1 +1,1 @@
-web: gunicorn "SalesforceUtilityTools:wsgi" --log-file -
+web: gunicorn "SalesforceUtilityTools:app" --log-file -
