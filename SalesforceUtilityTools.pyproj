@@ -28,10 +28,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app.py">
+    <Compile Include="runserver.py" />
+    <Compile Include="SalesforceUtilityTools\wsgi.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="runserver.py" />
     <Compile Include="SalesforceUtilityTools\__init__.py" />
     <Compile Include="SalesforceUtilityTools\views.py" />
   </ItemGroup>

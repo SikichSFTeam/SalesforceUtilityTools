@@ -1,6 +1,7 @@
 from os import environ
 from SalesforceUtilityTools import app
 
+
 def create_app():
     #HOST = environ.get('SERVER_HOST', 'localhost')
     #try:
@@ -10,4 +11,4 @@ def create_app():
     #return app.run(HOST, PORT)
     return app.run()
 
-my_app = create_app()
+application = create_app()
