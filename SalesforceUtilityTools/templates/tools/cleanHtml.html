@@ -6,7 +6,7 @@
 
 <form action="{{ url_for('tools_cleanHtml')  }}" method="post">
     <div class="container">
-        {% if 'errorMessages' in responseData and 0 < responseData.errorMessages|length  %}
+        {% if 'validationErrors' in responseData and 0 < responseData.validationErrors|length  %}
         <div class="form-row bg-danger">
             <ul>
                 {% for msg in responseData.errorMessages %}
@@ -19,19 +19,19 @@
             <div class="col-lg">
                 <h4 class="thead-dark">Salesforce Org Credentials</h4>
                 <div class="form-group">
-                    <label class="col-form-label" for="username">Username:</label>
+                    <label class="col-form-label" for="username">Username</label>
                     <input type="email" class="form-control" id="username" name="username" required value="nexgen@morgiawm.com.partial" />
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label" for="password">Password:</label>
+                    <label class="col-form-label" for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required value="LRBi15@RGu!n" />
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label" for="token">Token:</label>
+                    <label class="col-form-label" for="token">Token</label>
                     <input type="password" class="form-control" id="token" name="token" required value="BXwwtQg7nsSNh8FOcnaO6Yf3" />
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label" for="domain">Domain:</label>
+                    <label class="col-form-label" for="domain">Domain</label>
                     <select size="1" id="domain" class="form-control" name="domain" required>
                         <option value="login">Production</option>
                         <option value="test" selected>Sandbox</option>
@@ -53,22 +53,32 @@
         </div>
         <div class="form-row">
             <div class="col-lg">
+                <label class="col-form-label" for="performUpdate">Perform Update</label>
+                <input type="checkbox" class="form-check" id="performUpdate" name="performUpdate" />
             </div>
             <div class="col-lg">
-
                 <input type="submit" class="form-control" />
             </div>
         </div>
     </div>
 </form>
 
-{% if 'debugMessages' in responseData and 0 < responseData.debugMessages|length  %}
-<div class="form-row bg-info">
-    <ul>
-        {% for msg in responseData.debugMessages %}
-        <li>{{ msg }}</li>
+{% if 'preview' in responseData and 0 < responseData.preview|length  %}
+<div class="container bg-info">
+    {% for rec in responseData.preview %}
+    {% if loop.index == 1 %}
+        <div class="row bg-dark text-light">
+            {% for key, value in rec.items() %}
+            <div class="col">{{ key }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="row">
+        {% for key, value in rec.items() %}
+        <div class="col">{{ value }}</div>
         {% endfor %}
-    </ul>
+    </div>
+    {% endfor %}
 </div>
 {% endif  %}
 

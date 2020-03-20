@@ -14,7 +14,7 @@ class cleanHtml(object):
     def processRequest():
         responseData = {
                 'isValid': True,
-                'errorMessages': []
+                'validationErrors': []
             }
 
         if request.method != 'POST':
@@ -30,42 +30,43 @@ class cleanHtml(object):
         sfdomain = request.form['domain'] if 'domain' in request.form.keys() else ''
         sfobject = request.form['object'] if 'object' in request.form.keys() else ''
         fields = request.form['fields'] if 'fields' in request.form.keys() else ''
+        performUpdate = request.form['performUpdate'] if 'performUpdate' in request.form.keys() else False
 
         # Input Validation
 
         if sfuser == '':
             responseData['isValid'] = False
-            responseData['errorMessages'].append('Username is required.')
+            responseData['validationErrors'].append('Username is required.')
 
         if sfpass == '':
             responseData['isValid'] = False
-            responseData['errorMessages'].append('Password is required.')
+            responseData['validationErrors'].append('Password is required.')
 
         if sftoken == '':
             responseData['isValid'] = False
-            responseData['errorMessages'].append('Token is required.')
+            responseData['validationErrors'].append('Token is required.')
 
         if sfdomain == '':
             responseData['isValid'] = False
-            responseData['errorMessages'].append('Domain is required.')
+            responseData['validationErrors'].append('Domain is required.')
 
         if sfobject == '':
             responseData['isValid'] = False
-            responseData['errorMessages'].append('Object is required.')
+            responseData['validationErrors'].append('Object is required.')
         elif not re.match('^[A-Za-z0-9_]+$', sfobject):
                 responseData['isValid'] = False
-                responseData['errorMessages'].append('Invalid object name: ' + sfobject + '.')
+                responseData['validationErrors'].append('Invalid object name: ' + sfobject + '.')
 
         if fields == '':
             responseData['isValid'] = False
-            responseData['errorMessages'].append('At least one field is required.')
+            responseData['validationErrors'].append('At least one field is required.')
 
         fieldList = []
         for fld in fields.split(','):
             fld = fld.strip()
             if not re.match('^[A-Za-z0-9_]+$', fld):
                 responseData['isValid'] = False
-                responseData['errorMessages'].append('Invalid field name: ' + fld + '.')
+                responseData['validationErrors'].append('Invalid field name: ' + fld + '.')
             else:
                 fieldList.append(fld)
 
@@ -106,19 +107,29 @@ class cleanHtml(object):
             else:
                 break
 
-        responseData['debugMessages'] = []
-        logger = logging.getLogger()
-        
-        if logger.getEffectiveLevel() <= logging.DEBUG:
+        responseData['preview'] = []
+        responseData['errors'] = []
+        if not performUpdate:
             for rec in updateRecs:
-                if len(responseData['debugMessages']) > 500:
-                    break
-                responseData['debugMessages'].append(json.dumps(rec))
+                responseData['preview'].append(rec)
+        else:
+            sfResponse = sf.bulk.__getattr__(sfobject).update(updateRecs)
 
+            for i in range(len(sfResponse)):
+                if sfResponse[i]['success'] == False:
+                    try:
+                        r = {
+                                'errors': response[i]['errors']
+                            }
+                        for key, value in request[i].items():
+                            r[key] = value
+
+                        responseData['errors'].append(r)
+                    except:
+                        responseData['errors'].append(
+                                response[i]['errors']
+                            )
             
-        #app.logger.debug('sfuser:' + sfuser)
-
-
         return responseData
         
         
