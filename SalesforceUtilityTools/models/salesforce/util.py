@@ -1,6 +1,7 @@
 """Utility functions for simple-salesforce"""
 
 import xml.dom.minidom
+import datetime
 
 from .exceptions import (
     SalesforceGeneralError, SalesforceExpiredSession,
@@ -8,6 +9,23 @@ from .exceptions import (
     SalesforceRefusedRequest, SalesforceResourceNotFound
 )
 
+def sfdcStr(data):
+    output = ''
+    if data is None:
+        output = None
+    elif isinstance(data, dict):
+        output = {}
+        for key,value in data.items():
+            output[key] = sfdcStr(value)
+    elif isinstance(data, datetime.datetime):
+        output = None if data is None else data.isoformat()
+    elif isinstance(data, datetime.date):
+        output = None if data is None else data.isoformat()
+    elif isinstance(data, bool):
+        output = 'true' if data else 'false'
+    else:
+        output = data.__str__()
+    return output
 
 # pylint: disable=invalid-name
 def getUniqueElementValueFromXmlString(xmlString, elementName):

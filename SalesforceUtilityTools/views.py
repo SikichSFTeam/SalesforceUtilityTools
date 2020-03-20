@@ -52,4 +52,5 @@ def tools_cleanHtml():
         'tools/cleanHtml.html',
         title='Clean Html',
         year=datetime.now().year,
+        responseData=responseData,
     )
