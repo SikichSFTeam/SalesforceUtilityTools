@@ -72,13 +72,14 @@ class cleanHtml(object):
         sf = Salesforce(username=sfuser, password=sfpass, security_token=sftoken, domain=sfdomain)
 
         fields = ', '.join(fieldList)
+        app.logger.info(fields)
 
         query = "select Id, {0} from {1}".format(fields, sfobject)
         SfQry = sf.query(query)
 
         while True:
             for rec in SfQry['records']:
-                app.logger.debug(json.dumps(rec))
+                app.logger.info(json.dumps(rec))
             if SfQry['done'] == False:
                 SfQry = sf.query_more(SfQry['nextRecordsUrl'], True)
             else:
