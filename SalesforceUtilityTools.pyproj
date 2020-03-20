@@ -18,6 +18,11 @@
     <Name>SalesforceUtilityTools</Name>
     <RootNamespace>SalesforceUtilityTools</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <StaticUriPattern>
+    </StaticUriPattern>
+    <StaticUriRewrite>
+    </StaticUriRewrite>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,7 +34,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="runserver.py" />
-    <Compile Include="SalesforceUtilityTools\wsgi.py">
+    <Compile Include="SalesforceUtilityTools\controllers\tools\cleanHtml.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SalesforceUtilityTools\controllers\tools\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SalesforceUtilityTools\controllers\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SalesforceUtilityTools\models\salesforce\api.py" />
+    <Compile Include="SalesforceUtilityTools\models\salesforce\bulk.py" />
+    <Compile Include="SalesforceUtilityTools\models\salesforce\exceptions.py" />
+    <Compile Include="SalesforceUtilityTools\models\salesforce\login.py" />
+    <Compile Include="SalesforceUtilityTools\models\salesforce\sfDataTypes.py" />
+    <Compile Include="SalesforceUtilityTools\models\salesforce\sfObject.py" />
+    <Compile Include="SalesforceUtilityTools\models\salesforce\util.py" />
+    <Compile Include="SalesforceUtilityTools\models\salesforce\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SalesforceUtilityTools\models\salesforce\__version__.py" />
+    <Compile Include="SalesforceUtilityTools\models\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SalesforceUtilityTools\__init__.py" />
@@ -37,41 +62,48 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SalesforceUtilityTools\" />
+    <Folder Include="SalesforceUtilityTools\controllers\" />
+    <Folder Include="SalesforceUtilityTools\controllers\tools\" />
+    <Folder Include="SalesforceUtilityTools\models\" />
+    <Folder Include="SalesforceUtilityTools\models\salesforce\" />
     <Folder Include="SalesforceUtilityTools\static\" />
     <Folder Include="SalesforceUtilityTools\static\content\" />
+    <Folder Include="SalesforceUtilityTools\static\css\" />
     <Folder Include="SalesforceUtilityTools\static\fonts\" />
+    <Folder Include="SalesforceUtilityTools\static\js\" />
     <Folder Include="SalesforceUtilityTools\static\scripts\" />
     <Folder Include="SalesforceUtilityTools\templates\" />
+    <Folder Include="SalesforceUtilityTools\templates\tools\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.json" />
+    <Content Include="libman.json" />
     <Content Include="Procfile" />
     <Content Include="requirements.txt" />
     <Content Include="runtime.txt" />
-    <Content Include="SalesforceUtilityTools\static\content\bootstrap.css" />
-    <Content Include="SalesforceUtilityTools\static\content\bootstrap.min.css" />
     <Content Include="SalesforceUtilityTools\static\content\site.css" />
+    <Content Include="SalesforceUtilityTools\static\css\bootstrap-grid.css" />
+    <Content Include="SalesforceUtilityTools\static\css\bootstrap.min.css" />
     <Content Include="SalesforceUtilityTools\static\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="SalesforceUtilityTools\static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="SalesforceUtilityTools\static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="SalesforceUtilityTools\static\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="SalesforceUtilityTools\static\scripts\bootstrap.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\bootstrap.min.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\jquery-1.10.2.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\jquery-1.10.2.min.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\jquery-1.10.2.min.map" />
-    <Content Include="SalesforceUtilityTools\static\scripts\jquery.validate-vsdoc.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\jquery.validate.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\jquery.validate.min.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="SalesforceUtilityTools\static\scripts\modernizr-2.6.2.js" />
+    <Content Include="SalesforceUtilityTools\static\js\bootstrap.js" />
+    <Content Include="SalesforceUtilityTools\static\js\bootstrap.min.js" />
+    <Content Include="SalesforceUtilityTools\static\scripts\jquery.js" />
+    <Content Include="SalesforceUtilityTools\static\scripts\jquery.min.js" />
+    <Content Include="SalesforceUtilityTools\static\scripts\jquery.min.map" />
+    <Content Include="SalesforceUtilityTools\static\scripts\jquery.slim.js" />
+    <Content Include="SalesforceUtilityTools\static\scripts\jquery.slim.min.js" />
+    <Content Include="SalesforceUtilityTools\static\scripts\jquery.slim.min.map" />
+    <Content Include="SalesforceUtilityTools\static\scripts\modernizr.js" />
+    <Content Include="SalesforceUtilityTools\static\scripts\modernizr.min.js" />
     <Content Include="SalesforceUtilityTools\static\scripts\respond.js" />
     <Content Include="SalesforceUtilityTools\static\scripts\respond.min.js" />
     <Content Include="SalesforceUtilityTools\static\scripts\_references.js" />
     <Content Include="SalesforceUtilityTools\templates\about.html" />
     <Content Include="SalesforceUtilityTools\templates\contact.html" />
+    <Content Include="SalesforceUtilityTools\templates\tools\cleanHtml.html" />
     <Content Include="SalesforceUtilityTools\templates\index.html" />
     <Content Include="SalesforceUtilityTools\templates\layout.html" />
   </ItemGroup>

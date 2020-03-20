@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitter-bootstrap@4.4.1",
+      "destination": "SalesforceUtilityTools/static/",
+      "files": [
+        "css/bootstrap-grid.css",
+        "css/bootstrap-grid.css.map",
+        "css/bootstrap-grid.min.css",
+        "css/bootstrap-grid.min.css.map",
+        "css/bootstrap-reboot.css",
+        "css/bootstrap-reboot.css.map",
+        "css/bootstrap-reboot.min.css",
+        "css/bootstrap-reboot.min.css.map",
+        "css/bootstrap.css",
+        "css/bootstrap.css.map",
+        "css/bootstrap.min.css",
+        "css/bootstrap.min.css.map",
+        "js/bootstrap.js",
+        "js/bootstrap.min.js"
+      ]
+    },
+    {
+      "library": "jquery@3.4.1",
+      "destination": "SalesforceUtilityTools/static/scripts/",
+      "files": [
+        "jquery.js",
+        "jquery.min.js",
+        "jquery.min.map"
+      ]
+
+    },
+    {
+      "library": "modernizr@2.8.3",
+      "destination": "SalesforceUtilityTools/static/scripts/"
+    },
+    {
+      "library": "respond.js@1.4.2",
+      "destination": "SalesforceUtilityTools/static/scripts/"
+    }
+  ]
+}

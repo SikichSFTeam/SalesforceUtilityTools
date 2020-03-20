@@ -1,10 +1,15 @@
 """
 Routes and views for the flask application.
+
+Add each endpoint to this file.  Add a call to a controller to add dynamic logic if needed.
 """
 
 from datetime import datetime
 from flask import render_template
+from flask import request
 from SalesforceUtilityTools import app
+from SalesforceUtilityTools.controllers import *
+import sys, logging
 
 @app.route('/')
 @app.route('/home')
@@ -34,4 +39,17 @@ def about():
         title='About',
         year=datetime.now().year,
         message='Your application description page.'
+    )
+
+@app.route('/tools/cleanHtml', methods=['POST', 'GET'])
+def tools_cleanHtml():
+    responseData = tools.cleanHtml.processRequest()
+
+    if responseData['isValid']:
+        pass
+
+    return render_template(
+        'tools/cleanHtml.html',
+        title='Clean Html',
+        year=datetime.now().year,
     )

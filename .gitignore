@@ -4,4 +4,4 @@
 
 /env/Lib/site-packages
 /env/Scripts
-/SalesforceUtilityTools/__pycache__
+__pycache__
