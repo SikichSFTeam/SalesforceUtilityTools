@@ -34,8 +34,8 @@
                         Login to Salesforce
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSalesforce">
-                        <a class="dropdown-item" href="https://login.salesforce.com/services/oauth2/authorize?client_id={{ viewData.sfClientId }}&redirect_uri={{ url_for('oathLogin') }}&response_type=code">Production</a>
-                        <a class="dropdown-item" href="https://login.salesforce.com/services/oauth2/authorize?client_id={{ viewData.sfClientId }}&redirect_uri={{ url_for('oathLogin') }}&response_type=code">Sandbox</a>
+                        <a class="dropdown-item" href="https://login.salesforce.com/services/oauth2/authorize?client_id={{ viewData.sfClientId }}&redirect_uri={{ url_for('oathLogin',_external=True) }}&response_type=code">Production</a>
+                        <a class="dropdown-item" href="https://login.salesforce.com/services/oauth2/authorize?client_id={{ viewData.sfClientId }}&redirect_uri={{ url_for('oathLogin',_external=True) }}&response_type=code">Sandbox</a>
                     </div>
                     
                 </li>
