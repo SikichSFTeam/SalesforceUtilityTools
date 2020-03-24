@@ -3,7 +3,7 @@ import logging, sys, re, json, html, flask
 from SalesforceUtilityTools.models.salesforce.api import Salesforce
 from SalesforceUtilityTools.models.salesforce.util import sfdcStr
 
-class oauthLoginCtrl(object):
+class oauthLoginCtrl:
     """description of class"""
 
     def __init__(self, *args, **kwargs):
