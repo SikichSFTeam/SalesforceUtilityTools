@@ -39,7 +39,7 @@ class createTemplates(object):
 
         return output
 
-    def processRequest():
+    def processRequest(self):
         if request.method != 'POST':
             self.responseData['isValid'] = False
             return self.responseData

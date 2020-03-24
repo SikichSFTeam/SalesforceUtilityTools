@@ -1,3 +1,4 @@
-__all__ = ['cleanHtml','masterController']
+__all__ = ['cleanHtml','sfToolController','createTemplates']
 from .cleanHtml import cleanHtml
-from .masterController import masterController
+from .createTemplates import createTemplates
+from .sfToolController import sfToolController

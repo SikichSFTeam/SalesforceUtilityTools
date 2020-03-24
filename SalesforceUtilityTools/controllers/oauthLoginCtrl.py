@@ -2,14 +2,15 @@ from SalesforceUtilityTools import app
 import logging, sys, re, json, html, flask
 from SalesforceUtilityTools.models.salesforce.api import Salesforce
 from SalesforceUtilityTools.models.salesforce.util import sfdcStr
+from .masterController import masterController
 
-class oauthLoginCtrl:
+class oauthLoginCtrl(masterController):
     """description of class"""
 
     def __init__(self, *args, **kwargs):
         return super().__init__(*args, **kwargs)
 
-    def processRequest():
+    def processRequest(self):
         request = flask.request
 
         print('Form...')
@@ -29,4 +30,10 @@ class oauthLoginCtrl:
         if authCode is None:
             return 
 
-        flask.Response.set_cookie('SalesforceAuthCode', value=authCode)
+        # Create hook to set cookie value
+        @flask.after_this_request
+        def add_header(response):
+            response.set_cookie('SalesforceAuthCode', value=authCode)
+            return response
+
+        return self.responseData

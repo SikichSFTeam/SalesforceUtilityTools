@@ -1,19 +1,14 @@
 from flask import request
 from SalesforceUtilityTools import app
+from ..masterController import masterController
 import logging, sys, re, json, html
 from SalesforceUtilityTools.models.salesforce.api import Salesforce
 from SalesforceUtilityTools.models.salesforce.util import sfdcStr
 
-class masterController(object):
-    responseData = {}
+class sfToolController(masterController):
     sf = None
 
     def __init__(self, *args, **kwargs):
-        self.responseData = {
-            'isValid': True,
-            'validationErrors': []
-        }
-
         return super().__init__(*args, **kwargs)
 
 

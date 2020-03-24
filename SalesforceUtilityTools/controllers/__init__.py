@@ -1,3 +1,4 @@
-__all__ = ['tools', 'oauthLoginCtrl']
+__all__ = ['tools', 'oauthLoginCtrl','masterController']
 from .tools import *
-from . import *
+from .oauthLoginCtrl import oauthLoginCtrl
+from .masterController import masterController

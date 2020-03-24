@@ -7,6 +7,7 @@ Add each endpoint to this file.  Add a call to a controller to add dynamic logic
 from datetime import datetime
 from flask import render_template
 from flask import request
+import flask
 from SalesforceUtilityTools import app
 from SalesforceUtilityTools.controllers import *
 import sys, logging, yaml
@@ -67,8 +68,10 @@ def oathLogin():
     responseData = cntlr.processRequest()
 
     if responseData['isValid']:
-        pass
-
+        if 'state' in request.args.keys():
+            return flask.redirect('/' + request.args['state'])
+        else:
+            return flask.redirect('/')
 
 @app.route('/tools/cleanHtml', methods=['POST', 'GET'])
 def tools_cleanHtml():
