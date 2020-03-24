@@ -1,6 +1,5 @@
-from flask import request, response
 from SalesforceUtilityTools import app
-import logging, sys, re, json, html
+import logging, sys, re, json, html, flask
 from SalesforceUtilityTools.models.salesforce.api import Salesforce
 from SalesforceUtilityTools.models.salesforce.util import sfdcStr
 
@@ -11,6 +10,7 @@ class oauthLoginCtrl(object):
         return super().__init__(*args, **kwargs)
 
     def processRequest():
+        request = flask.request
 
         print('Form...')
         for key, value in request.form.items():
@@ -29,5 +29,4 @@ class oauthLoginCtrl(object):
         if authCode is None:
             return 
 
-
-        response.set_cookie('SalesforceAuthCode', value=authCode)
+        flask.Response.set_cookie('SalesforceAuthCode', value=authCode)
