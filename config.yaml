@@ -1,5 +1,8 @@
+appName: SikichUtilityTools
+logLevel: WARN
+
 salesforce:
-	consumerKey: "3MVG9Kip4IKAZQEXQ5OBlQCcVM9cLF7Wso4xitdnuTdwjIqq0inKIWrBRjzOyvSXnOa1.ZvAGTfKDWGXGRSOU"
-	consumerSecret: "A86EADE8EC4CDC09D64A2D2C05CAF66EA4C93F5F0227C3A32D918EF98BFD161E"
+  consumerKey: "3MVG9Kip4IKAZQEXQ5OBlQCcVM9cLF7Wso4xitdnuTdwjIqq0inKIWrBRjzOyvSXnOa1.ZvAGTfKDWGXGRSOU"
+  consumerSecret: "A86EADE8EC4CDC09D64A2D2C05CAF66EA4C93F5F0227C3A32D918EF98BFD161E"
 
 callbackUrl: "https://clh-pytest.herokuapp.com/oauthLogin"
