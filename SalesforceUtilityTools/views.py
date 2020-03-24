@@ -41,9 +41,19 @@ def about():
         message='Your application description page.'
     )
 
+@app.route('/oathLogin', methods=['POST', 'GET'])
+def oathLogin():
+    cntlr = oauthLoginCtrl()
+    responseData = cntlr.processRequest()
+
+    if responseData['isValid']:
+        pass
+
+
 @app.route('/tools/cleanHtml', methods=['POST', 'GET'])
 def tools_cleanHtml():
-    responseData = tools.cleanHtml.processRequest()
+    cntlr = tools.cleanHtml()
+    responseData = cntlr.processRequest()
 
     if responseData['isValid']:
         pass
@@ -51,6 +61,21 @@ def tools_cleanHtml():
     return render_template(
         'tools/cleanHtml.html',
         title='Clean Html',
+        year=datetime.now().year,
+        responseData=responseData,
+    )
+
+@app.route('/tools/createTemplate', methods=['POST', 'GET'])
+def tools_createTemplate():
+    cntlr = tools.createTemplate()
+    responseData = cntlr.processRequest()
+
+    if responseData['isValid']:
+        pass
+
+    return render_template(
+        'tools/createTemplate.html',
+        title='Create Template',
         year=datetime.now().year,
         responseData=responseData,
     )

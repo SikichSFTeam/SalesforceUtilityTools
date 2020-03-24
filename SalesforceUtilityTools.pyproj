@@ -34,7 +34,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="runserver.py" />
+    <Compile Include="SalesforceUtilityTools\controllers\oauthLoginCtrl.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SalesforceUtilityTools\controllers\tools\cleanHtml.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SalesforceUtilityTools\controllers\tools\masterController.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SalesforceUtilityTools\controllers\tools\createTemplates.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SalesforceUtilityTools\controllers\tools\__init__.py">
@@ -77,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.json" />
+    <Content Include="config.yaml" />
     <Content Include="libman.json" />
     <Content Include="Procfile" />
     <Content Include="requirements.txt" />
