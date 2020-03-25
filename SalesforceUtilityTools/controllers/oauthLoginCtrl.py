@@ -31,8 +31,8 @@ class oauthLoginCtrl(masterController):
             return 
 
         flask.session['SalesforceAuthCode'] = authCode
-        host = request.referrer.split('//')[1].split('.')[0]
-        flask.session['SalesforceHostname'] = host
+        instance = request.referrer.split('//')[1].split('/')[0]
+        flask.session['SalesforceInstance'] = instance
         flask.session.modified = True
         
         # Create hook to set cookie value

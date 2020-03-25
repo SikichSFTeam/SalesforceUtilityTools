@@ -29,7 +29,9 @@ def _init():
         viewData['IsSalesforceAuthed'] = False
 
     if 'SalesforceHostname' in flask.session.keys():
-        viewData['SalesforceHostname'] = flask.session['SalesforceHostname']
+        viewData['SalesforceInstance'] = flask.session['SalesforceInstance']
+    else:
+        viewData['SalesforceInstance'] = ''
 
     return viewData
 

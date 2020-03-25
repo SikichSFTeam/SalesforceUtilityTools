@@ -11,14 +11,17 @@ class sfToolController(masterController):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.SalesforceAuthCode = flask.session['SalesforceAuthCode']
 
-        return self
+        if 'SalesforceAuthCode' in flask.session:
+            self.SalesforceAuthCode = flask.session['SalesforceAuthCode']
+            self.SalesforceInstance = flask.session['SalesforceInstance']
+
+        return
 
 
     def handleFormLogin(self):
         if self.SalesforceAuthCode is not None:
-            self.sf = Salesforce(session_id=self.SalesforceAuthCode)
+            self.sf = Salesforce(session_id=self.SalesforceAuthCode, instance=self.SalesforceInstance)
 
         else:
             sfuser = flask.request.form['username'] if 'username' in flask.request.form.keys() else ''

@@ -26,12 +26,12 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarTools">
                         <a class="dropdown-item" href="{{ url_for('tools_cleanHtml') }}">Clean HTML</a>
-                        <a class="dropdown-item" href="{{ url_for('tools_createTemplate') }}">Clean HTML</a>
+                        <a class="dropdown-item" href="{{ url_for('tools_createTemplate') }}">Create Object Templates</a>
                     </div>
                 </li>
                 <li class="nav-fill">&nbsp;</li>
                 {% if viewData.IsSalesforceAuthed %}
-                <li class="nav-item"><a class="nav-link" href="/logout">Logout from {{ viewData.SalesforceHostname }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">Logout from {{ viewData.SalesforceInstance }}</a></li>
                 {% else %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarSalesforce" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
