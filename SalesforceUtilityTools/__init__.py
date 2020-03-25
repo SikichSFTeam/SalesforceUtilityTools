@@ -14,6 +14,7 @@ with open('secret_key.txt', mode='w+') as secretFile:
         secretFile.writelines([secret])
 
 app.config['SECRET_KEY'] = secret
+app.config['PERMANENT_SESSION_LIFETIME '] = timedelta(days=31)
 
 from . import views
 from SalesforceUtilityTools.controllers import *
