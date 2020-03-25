@@ -1,7 +1,7 @@
 """
 The flask application package.
 """
-import logging, sys, os, datetime
+import logging, sys, os
 from flask import Flask
 app = Flask(__name__)
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
@@ -14,7 +14,6 @@ with open('secret_key.txt', mode='w+') as secretFile:
         secretFile.writelines([secret])
 
 app.config['SECRET_KEY'] = secret
-app.config['PERMANENT_SESSION_LIFETIME '] = timedelta(days=31)
 
 from . import views
 from SalesforceUtilityTools.controllers import *
