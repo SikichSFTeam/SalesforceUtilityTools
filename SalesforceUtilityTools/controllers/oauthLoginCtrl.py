@@ -39,6 +39,7 @@ class oauthLoginCtrl(masterController):
         @flask.after_this_request
         def add_header(response):
             response.set_cookie('SalesforceAuthCode', value=authCode)
+            response.set_cookie('SalesforceHostname', value=host)
             return response
 
         return self.responseData
