@@ -23,9 +23,9 @@ class oauthLoginCtrl(masterController):
 
         authCode = None
         if request.method == 'POST' and 'code' in request.form.keys():
-            authCode = request.form['code']
+            authCode = request.form['access_token']
         elif request.method == 'GET' and 'code' in request.args.keys():
-            authCode = request.args['code']
+            authCode = request.args['access_token']
 
         if authCode is None:
             return 
