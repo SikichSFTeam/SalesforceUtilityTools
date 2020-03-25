@@ -36,10 +36,10 @@ class oauthLoginCtrl(masterController):
         flask.session.modified = True
         
         # Create hook to set cookie value
-        @flask.after_this_request
-        def add_header(response):
-            response.set_cookie('SalesforceAuthCode', value=authCode)
-            response.set_cookie('SalesforceHostname', value=host)
-            return response
+        #@flask.after_this_request
+        #def add_header(response):
+        #    response.set_cookie('SalesforceAuthCode', value=authCode)
+        #    response.set_cookie('SalesforceInstance', value=instance)
+        #    return response
 
         return self.responseData
