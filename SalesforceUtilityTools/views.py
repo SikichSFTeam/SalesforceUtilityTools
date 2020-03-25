@@ -82,7 +82,7 @@ def oathLogin():
             return flask.redirect('/')
 
 @app.route('/logout', methods=['POST', 'GET'])
-def oathLogin():
+def logout():
     viewData = _init()
 
     flask.session['SalesforceAuthCode'] = None
