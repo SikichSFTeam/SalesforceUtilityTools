@@ -70,7 +70,7 @@ def about():
 @app.route('/oathLogin', methods=['POST', 'GET'])
 def oathLogin():
     viewData = _init()
-    viewData['title']='About'
+    viewData['title']='Login'
 
     cntlr = oauthLoginCtrl()
     responseData = cntlr.processRequest()
@@ -80,6 +80,15 @@ def oathLogin():
             return flask.redirect('/' + request.args['state'])
         else:
             return flask.redirect('/')
+
+@app.route('/logout', methods=['POST', 'GET'])
+def oathLogin():
+    viewData = _init()
+
+    flask.session['SalesforceAuthCode'] = None
+    flask.session['SalesforceHostname'] = None
+    flask.session.modified = True
+    return flask.redirect('/')
 
 @app.route('/tools/cleanHtml', methods=['POST', 'GET'])
 def tools_cleanHtml():

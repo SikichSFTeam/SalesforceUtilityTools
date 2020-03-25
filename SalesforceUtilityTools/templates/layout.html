@@ -29,8 +29,9 @@
                         <a class="dropdown-item" href="{{ url_for('tools_createTemplate') }}">Clean HTML</a>
                     </div>
                 </li>
+                <li class="nav-fill">&nbsp;</li>
                 {% if viewData.IsSalesforceAuthed %}
-                <li class="nav-item"><a class="dropdown-item" href="/logout">Logout from {{ viewData.SalesforceHostname }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">Logout from {{ viewData.SalesforceHostname }}</a></li>
                 {% else %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarSalesforce" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,7 +43,6 @@
                     </div>
                 </li>
                 {% endif %}
-                <li class="nav-item"><a class="dropdown-item" href="/logout">Logout from {{ viewData.SalesforceHostname }}</a></li>
             </ul>
         </div>
     </div>
