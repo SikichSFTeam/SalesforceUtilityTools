@@ -30,6 +30,10 @@ class oauthLoginCtrl(masterController):
         if authCode is None:
             return 
 
+        flask.session['SalesforceAuthCode'] = authCode
+        host = request.referrer.split('//')[1].split('.')[0]
+        flask.session['SalesforceHostname'] = host
+        
         # Create hook to set cookie value
         @flask.after_this_request
         def add_header(response):

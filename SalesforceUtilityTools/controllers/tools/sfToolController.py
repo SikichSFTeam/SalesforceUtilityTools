@@ -1,4 +1,4 @@
-from flask import request
+import flask
 from SalesforceUtilityTools import app
 from ..masterController import masterController
 import logging, sys, re, json, html
@@ -7,36 +7,44 @@ from SalesforceUtilityTools.models.salesforce.util import sfdcStr
 
 class sfToolController(masterController):
     sf = None
+    SalesforceAuthCode = None
 
     def __init__(self, *args, **kwargs):
-        return super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
+        self.SalesforceAuthCode = flask.session['SalesforceAuthCode']
+
+        return self
 
 
     def handleFormLogin(self):
-        sfuser = request.form['username'] if 'username' in request.form.keys() else ''
-        sfpass = request.form['password'] if 'password' in request.form.keys() else ''
-        sftoken = request.form['token'] if 'token' in request.form.keys() else ''
-        sfdomain = request.form['domain'] if 'domain' in request.form.keys() else ''
+        if self.SalesforceAuthCode is not None:
+            self.sf = Salesforce(session_id=self.SalesforceAuthCode)
 
-        # Input Validation
+        else:
+            sfuser = flask.request.form['username'] if 'username' in flask.request.form.keys() else ''
+            sfpass = flask.request.form['password'] if 'password' in flask.request.form.keys() else ''
+            sftoken = flask.request.form['token'] if 'token' in flask.request.form.keys() else ''
+            sfdomain = flask.request.form['domain'] if 'domain' in flask.request.form.keys() else ''
 
-        if sfuser == '':
-            self.responseData['isValid'] = False
-            self.responseData['validationErrors'].append('Username is required.')
+            # Input Validation
 
-        if sfpass == '':
-            self.responseData['isValid'] = False
-            self.responseData['validationErrors'].append('Password is required.')
+            if sfuser == '':
+                self.responseData['isValid'] = False
+                self.responseData['validationErrors'].append('Username is required.')
 
-        if sftoken == '':
-            self.responseData['isValid'] = False
-            self.responseData['validationErrors'].append('Token is required.')
+            if sfpass == '':
+                self.responseData['isValid'] = False
+                self.responseData['validationErrors'].append('Password is required.')
 
-        if sfdomain == '':
-            self.responseData['isValid'] = False
-            self.responseData['validationErrors'].append('Domain is required.')
+            if sftoken == '':
+                self.responseData['isValid'] = False
+                self.responseData['validationErrors'].append('Token is required.')
 
-        if self.responseData['isValid']:
-            self.sf = Salesforce(username=sfuser, password=sfpass, security_token=sftoken, domain=sfdomain)
+            if sfdomain == '':
+                self.responseData['isValid'] = False
+                self.responseData['validationErrors'].append('Domain is required.')
+
+            if self.responseData['isValid']:
+                self.sf = Salesforce(username=sfuser, password=sfpass, security_token=sftoken, domain=sfdomain)
 
 

@@ -5,3 +5,4 @@
 /env/Lib/site-packages
 /env/Scripts
 __pycache__
+/secret_key.txt

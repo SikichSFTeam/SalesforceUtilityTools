@@ -23,6 +23,14 @@ def _init():
             'sfClientSecret': config['salesforce']['consumerSecret'],
         }
 
+    if 'SalesforceAuthCode' in flask.session.keys() and flask.session['SalesforceAuthCode'] is not None and flask.session['SalesforceAuthCode'] != '':
+        viewData['IsSalesforceAuthed'] = True
+    else:
+        viewData['IsSalesforceAuthed'] = False
+
+    if 'SalesforceHostname' in flask.session.keys():
+        viewData['SalesforceHostname'] = flask.session['SalesforceHostname']
+
     return viewData
 
 @app.route('/')

@@ -1,4 +1,4 @@
-from flask import request
+import flask
 from SalesforceUtilityTools import app
 import logging, sys, re, json, html
 
