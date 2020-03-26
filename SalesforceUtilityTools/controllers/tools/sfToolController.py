@@ -21,7 +21,7 @@ class sfToolController(masterController):
 
     def handleFormLogin(self):
         if self.SalesforceAuthCode is not None:
-            self.sf = Salesforce(session_id=self.SalesforceAuthCode, instance=self.SalesforceInstance)
+            self.sf = Salesforce(session_id=self.SalesforceAuthCode, instance_url=self.SalesforceInstance)
 
         else:
             sfuser = flask.request.form['username'] if 'username' in flask.request.form.keys() else ''

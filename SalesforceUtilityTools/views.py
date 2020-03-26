@@ -74,7 +74,7 @@ def oathLogin():
     viewData = _init()
     viewData['title']='Login'
 
-    cntlr = oauthLoginCtrl()
+    cntlr = oauthLoginCtrl(config=config)
     responseData = cntlr.processRequest()
 
     if responseData['isValid']:
