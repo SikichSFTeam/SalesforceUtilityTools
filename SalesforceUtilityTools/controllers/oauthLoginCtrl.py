@@ -49,6 +49,7 @@ class oauthLoginCtrl(masterController):
         
         rd = resp.json()
         accessToken = rd['access_token']
+        print('accessToken:' + accessToken)
         instance = rd['instance_url']
 
 
