@@ -22,9 +22,9 @@ class oauthLoginCtrl(masterController):
             print('    ' + key + ': ' + value)
 
         authCode = None
-        if request.method == 'POST' and 'code' in request.form.keys():
+        if request.method == 'POST' and 'access_token' in request.form.keys():
             authCode = request.form['access_token']
-        elif request.method == 'GET' and 'code' in request.args.keys():
+        elif request.method == 'GET' and 'access_token' in request.args.keys():
             authCode = request.args['access_token']
 
         if authCode is None:
