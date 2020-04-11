@@ -31,8 +31,8 @@ class oauthLoginCtrl(masterController):
         data = {
             'grant_type':'authorization_code',
             'code': code,
-            'client_id': config['salesforce']['consumerKey'],
-            'client_secret': config['salesforce']['consumerSecret'],
+            'client_id': self.config['salesforce']['consumerKey'],
+            'client_secret': self.config['salesforce']['consumerSecret'],
             'redirect_uri': flask.url_for('oathLogin',_external=True),
             '': ''
             }
