@@ -4,10 +4,11 @@ import logging, sys, re, json, html
 
 class masterController(object):
     """description of class"""
-    super().__init__(*args, **kwargs)
     responseData = {}
 
     def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
         self.responseData = {
             'isValid': True,
             'validationErrors': []
@@ -15,6 +16,6 @@ class masterController(object):
         if 'config' in kwargs:
             self.config = kwargs['config']
 
-        return
+        return 
 
 
