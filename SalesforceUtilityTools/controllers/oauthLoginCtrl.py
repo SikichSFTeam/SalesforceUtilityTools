@@ -47,6 +47,7 @@ class oauthLoginCtrl(masterController):
             raise ErrorConnectionError('GET ' +url+ ' {}'.format(resp.status_code))
         
         authData = authResp.json()
+        print("AuthResp: " + json.dumps(authData))
         accessToken = authData['access_token']
         print('accessToken:' + accessToken)
         instance = authData['instance_url']
