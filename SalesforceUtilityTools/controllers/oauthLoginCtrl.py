@@ -3,6 +3,7 @@ import logging, sys, re, json, html, flask, requests
 from SalesforceUtilityTools.models.salesforce.api import Salesforce
 from SalesforceUtilityTools.models.salesforce.util import sfdcStr
 from .masterController import masterController
+from flask import request
 
 class oauthLoginCtrl(masterController):
     """description of class"""
@@ -11,8 +12,6 @@ class oauthLoginCtrl(masterController):
         return super().__init__(*args, **kwargs)
 
     def processRequest(self):
-        request = flask.request
-
         print('Form...')
         for key, value in request.form.items():
             print('    ' + key + ': ' + value)
@@ -22,7 +21,7 @@ class oauthLoginCtrl(masterController):
             print('    ' + key + ': ' + value)
 
         authCode = None
-        if request.method == 'POST' and 'code' in request.form.keys():
+        if 'code' in request.form.keys():
             code = request.form['code']
         elif request.method == 'GET' and 'code' in request.args.keys():
             code = request.args['code']
