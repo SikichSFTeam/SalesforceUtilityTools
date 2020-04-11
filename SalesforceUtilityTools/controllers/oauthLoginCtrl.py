@@ -40,20 +40,16 @@ class oauthLoginCtrl(masterController):
                 'Content-type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/json',
             }
-        resp = requests.post(query,data,headers=head)
+        authResp = requests.post(query,data,headers=head)
         
-        if resp.status_code != 200:
+        if authResp.status_code != 200:
             # This means something went wrong.
             raise ErrorConnectionError('GET ' +url+ ' {}'.format(resp.status_code))
         
-        rd = resp.json()
-        accessToken = rd['access_token']
+        authData = authResp.json()
+        accessToken = authData['access_token']
         print('accessToken:' + accessToken)
-        instance = rd['instance_url']
-
-
-        if authCode is None:
-            return self.responseData
+        instance = authData['instance_url']
 
         flask.session['SalesforceAuthCode'] = accessToken
         flask.session['SalesforceInstance'] = instance

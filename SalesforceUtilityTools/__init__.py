@@ -14,6 +14,7 @@ with open('secret_key.txt', mode='w+') as secretFile:
         secretFile.writelines([secret])
 
 app.config['SECRET_KEY'] = secret
+Flask.secret_key = secret
 
 from . import views
 from SalesforceUtilityTools.controllers import *
