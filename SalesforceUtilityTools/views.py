@@ -12,10 +12,10 @@ from SalesforceUtilityTools import app
 from SalesforceUtilityTools.controllers import *
 import sys, logging, yaml
 
-def _init():
-    with open('config.yaml','r') as cfgFile:
-        config = yaml.load(cfgFile, Loader=yaml.SafeLoader)
+with open('config.yaml','r') as cfgFile:
+    config = yaml.load(cfgFile, Loader=yaml.SafeLoader)
 
+def _init():
     viewData = {
             'title': 'Sikich Utility Tools',
             'year': datetime.now().year,
