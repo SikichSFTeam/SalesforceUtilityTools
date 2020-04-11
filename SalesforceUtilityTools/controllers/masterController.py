@@ -7,7 +7,7 @@ class masterController(object):
     responseData = {}
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__()
 
         self.responseData = {
             'isValid': True,
