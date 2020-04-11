@@ -4,6 +4,7 @@ import logging, sys, re, json, html
 
 class masterController(object):
     """description of class"""
+    super().__init__(*args, **kwargs)
     responseData = {}
 
     def __init__(self, *args, **kwargs):
