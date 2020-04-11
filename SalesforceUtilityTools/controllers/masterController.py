@@ -14,6 +14,6 @@ class masterController(object):
         if 'config' in kwargs:
             self.config = kwargs['config']
 
-        return super().__init__(*args, **kwargs)
+        return
 
 
