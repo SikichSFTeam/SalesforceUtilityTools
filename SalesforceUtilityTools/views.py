@@ -25,10 +25,15 @@ def _init():
 
     if 'SalesforceAuthCode' in flask.session.keys() and flask.session['SalesforceAuthCode'] is not None and flask.session['SalesforceAuthCode'] != '':
         viewData['IsSalesforceAuthed'] = True
+    elif request.cookies.get('SalesforceAuthCode') is not None:
+        viewData['IsSalesforceAuthed'] = True
+        flask.session['SalesforceAuthCode'] = request.cookies.get('SalesforceAuthCode')
+        flask.session['SalesforceInstance'] = request.cookies.get('SalesforceInstance')
+        flask.session.modified = True
     else:
         viewData['IsSalesforceAuthed'] = False
 
-    if 'SalesforceHostname' in flask.session.keys():
+    if 'SalesforceInstance' in flask.session.keys():
         viewData['SalesforceInstance'] = flask.session['SalesforceInstance']
     else:
         viewData['SalesforceInstance'] = ''
