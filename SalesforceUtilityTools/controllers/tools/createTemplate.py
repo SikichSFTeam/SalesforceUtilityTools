@@ -20,7 +20,7 @@ class createTemplate(sfToolController):
 
         zipFile = io.BytesIO()
         recordTypes = ''
-        with ZipFile(zipFile, 'w', compression=zipfile.ZIP_DEFLATED) as zip:
+        with zipfile.ZipFile(zipFile, 'w', compression=zipfile.ZIP_DEFLATED) as zip:
             for obj in sfobjects:
                 desc = self.sf.__getattr__(obj).describe()
                 objectName = desc['name']
