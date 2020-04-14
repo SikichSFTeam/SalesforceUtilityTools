@@ -89,13 +89,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.json" />
+    <Content Include="bootstrap-grid.css.map" />
+    <Content Include="bootstrap-grid.min.css" />
+    <Content Include="bootstrap-grid.min.css.map" />
+    <Content Include="bootstrap-reboot.css" />
+    <Content Include="bootstrap-reboot.css.map" />
+    <Content Include="bootstrap-reboot.min.css" />
+    <Content Include="bootstrap-reboot.min.css.map" />
+    <Content Include="bootstrap.css" />
+    <Content Include="bootstrap.css.map" />
+    <Content Include="bootstrap.js" />
+    <Content Include="bootstrap.min.css.map" />
+    <Content Include="bootstrap.min.js" />
     <Content Include="config.yaml" />
+    <Content Include="jquery.js" />
+    <Content Include="jquery.min.js" />
+    <Content Include="jquery.min.map" />
     <Content Include="libman.json" />
+    <Content Include="modernizr.js" />
+    <Content Include="modernizr.min.js" />
     <Content Include="Procfile" />
     <Content Include="requirements.txt" />
+    <Content Include="respond.js" />
     <Content Include="runtime.txt" />
     <Content Include="SalesforceUtilityTools\static\content\site.css" />
     <Content Include="SalesforceUtilityTools\static\css\bootstrap-grid.css" />
+    <Content Include="SalesforceUtilityTools\static\css\bootstrap.css" />
     <Content Include="SalesforceUtilityTools\static\css\bootstrap.min.css" />
     <Content Include="SalesforceUtilityTools\static\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="SalesforceUtilityTools\static\fonts\glyphicons-halflings-regular.svg" />

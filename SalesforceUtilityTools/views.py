@@ -125,6 +125,9 @@ def tools_createTemplate():
     if responseData['isValid']:
         pass
 
+    if 'file' in responseData and responseData['file'] is not None:
+        return send_file(responseData['file'], mimetype='application/zip', attachment_filename='templates.zip')
+
     return render_template(
         'tools/createTemplate.html',
         viewData=viewData,

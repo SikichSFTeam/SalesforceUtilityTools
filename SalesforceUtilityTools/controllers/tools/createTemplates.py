@@ -1,3 +1,5 @@
+import csv, io, zipfile
+
 class createTemplates(object):
     """Class to control createTemplates page"""
 
@@ -43,3 +45,38 @@ class createTemplates(object):
         if request.method != 'POST':
             self.responseData['isValid'] = False
             return self.responseData
+
+        sfobjects = request.form['objects'].split(',') if 'objects' in request.form.keys() else ''
+
+        zipFile = io.BytesIO()
+        recordTypes = ''
+        with ZipFile(zipFile, 'w', compression=zipfile.ZIP_DEFLATED) as zip:
+            for obj in sfobjects:
+                desc = self.sf.__getattr__(obj).describe()
+                objectName = desc['name']
+                fields = parseDesc(desc)
+                data = writeCsv(fields, objectName)
+                with io.StringIO() as csvFile:
+                    csvWtr = csv.writer(csvFile)
+                    csvWtr.writerows(data)
+                zip.write(csvFile,arcname=objectName+'.csv')
+
+                recordTypes += obj + ' Record Types'
+                for rt in desc['recordTypeInfos']:
+                    if not rt['available']:
+                        continue
+        
+                    recordTypes += '  name' + ': ' + str(rt['name'])
+                    recordTypes += '    default' + ': ' + str(rt['defaultRecordTypeMapping'])
+                    recordTypes += '    recordTypeId' + ': ' + str(rt['recordTypeId'])
+
+            with io.StringIO() as csvFile:
+                csvWtr = csv.writer(csvFile)
+                csvWtr.writerows(recordTypes)
+            zip.write(csvFile,arcname='RecordTypes.txt')
+
+        self.responseData['file'] = zipFile
+
+
+                
+
