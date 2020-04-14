@@ -46,7 +46,7 @@
     <Compile Include="SalesforceUtilityTools\controllers\tools\sfToolController.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SalesforceUtilityTools\controllers\tools\createTemplates.py">
+    <Compile Include="SalesforceUtilityTools\controllers\tools\createTemplate.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SalesforceUtilityTools\controllers\tools\__init__.py">
@@ -135,6 +135,7 @@
     <Content Include="SalesforceUtilityTools\static\scripts\_references.js" />
     <Content Include="SalesforceUtilityTools\templates\about.html" />
     <Content Include="SalesforceUtilityTools\templates\contact.html" />
+    <Content Include="SalesforceUtilityTools\templates\tools\createTemplate.html" />
     <Content Include="SalesforceUtilityTools\templates\tools\cleanHtml.html" />
     <Content Include="SalesforceUtilityTools\templates\index.html" />
     <Content Include="SalesforceUtilityTools\templates\layout.html" />
