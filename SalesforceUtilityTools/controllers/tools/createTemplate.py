@@ -40,10 +40,10 @@ class createTemplate(sfToolController):
                     recordTypes += '    default' + ': ' + str(rt['defaultRecordTypeMapping'])
                     recordTypes += '    recordTypeId' + ': ' + str(rt['recordTypeId'])
 
-            with io.StringIO() as csvFile:
-                csvWtr = csv.writer(csvFile)
-                csvWtr.writerows(recordTypes)
-                zip.write(csvFile,arcname='RecordTypes.txt')
+            print(recordTypes)
+            with io.StringIO() as textFile:
+                textFile.writelines(recordTypes)
+                zip.write(textFile,arcname='RecordTypes.txt')
 
         self.responseData['file'] = zipFile
 
