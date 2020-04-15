@@ -32,7 +32,7 @@ class createTemplate(sfToolController):
                     zip.write(csvFile,arcname=objectName+'.csv')
 
                 recordTypes += obj + ' Record Types'
-                for rt in desc['recordTypeInfo']:
+                for rt in desc['recordTypeInfos']:
                     if not rt['available']:
                         continue
         
