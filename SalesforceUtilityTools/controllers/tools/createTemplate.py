@@ -29,7 +29,7 @@ class createTemplate(sfToolController):
                 with io.StringIO() as csvFile:
                     csvWtr = csv.writer(csvFile)
                     csvWtr.writerows(data)
-                zip.write(csvFile,arcname=objectName+'.csv')
+                    zip.write(csvFile,arcname=objectName+'.csv')
 
                 recordTypes += obj + ' Record Types'
                 for rt in desc['recordTypeInfos']:
@@ -43,7 +43,7 @@ class createTemplate(sfToolController):
             with io.StringIO() as csvFile:
                 csvWtr = csv.writer(csvFile)
                 csvWtr.writerows(recordTypes)
-            zip.write(csvFile,arcname='RecordTypes.txt')
+                zip.write(csvFile,arcname='RecordTypes.txt')
 
         self.responseData['file'] = zipFile
 
