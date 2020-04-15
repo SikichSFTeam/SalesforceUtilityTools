@@ -25,10 +25,11 @@ class createTemplate(sfToolController):
                 desc = self.sf.__getattr__(obj).describe()
                 objectName = desc['name']
                 fields = parseDesc(desc)
-                data = writeCsv(fields, objectName)
+                #data = writeCsv(fields, objectName)
                 with io.StringIO() as csvFile:
                     csvWtr = csv.writer(csvFile)
-                    csvWtr.writerows(data)
+                    csvWtr.writerows(fields)
+                    print('Template\n' + csvFile.getvalue())
                     zip.write(csvFile,arcname=objectName+'.csv')
 
                 recordTypes += obj + ' Record Types'
@@ -40,7 +41,7 @@ class createTemplate(sfToolController):
                     recordTypes += '    default' + ': ' + str(rt['defaultRecordTypeMapping'])
                     recordTypes += '    recordTypeId' + ': ' + str(rt['recordTypeId'])
 
-            print("recordTypes\n"+recordTypes)
+            print('recordTypes\n' + recordTypes)
             with io.StringIO() as textFile:
                 textFile.writelines(recordTypes)
                 zip.write(textFile,arcname='RecordTypes.txt')
