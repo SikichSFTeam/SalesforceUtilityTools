@@ -32,7 +32,7 @@ class createTemplate(sfToolController):
                     zip.write(csvFile,arcname=objectName+'.csv')
 
                 recordTypes += obj + ' Record Types'
-                for rt in desc['recordTypeInfos']:
+                for rt in desc['recordTypeInfo']:
                     if not rt['available']:
                         continue
         
@@ -40,7 +40,7 @@ class createTemplate(sfToolController):
                     recordTypes += '    default' + ': ' + str(rt['defaultRecordTypeMapping'])
                     recordTypes += '    recordTypeId' + ': ' + str(rt['recordTypeId'])
 
-            print(recordTypes)
+            print("recordTypes\n"+recordTypes)
             with io.StringIO() as textFile:
                 textFile.writelines(recordTypes)
                 zip.write(textFile,arcname='RecordTypes.txt')
